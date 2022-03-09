@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="./style.css" />
+		<link rel="stylesheet" href="./normalize.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Roboto:wght@100;300;400;500;700;900&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body class="main-body">
+		<header class="Header">
+			<nav>
+				<ul class="nav-bar">
+					<li><h1 class="title">Booklify</h1></li>
+					<li><p class="slogan">Book Management in one place</p></li>
+					<li class="left">
+						<input class="search-bar" type="text" placeholder="Search" />
+					</li>
+				</ul>
+			</nav>
+		</header>
+
+		<main class="container">
+			<div class="button-container">
+				<button class="button add">+</button>
+				<h3 class="add-title">Add Book</h3>
+			</div>
+
+			<form action="" class="form-popup book-form">
+				<h2>Add a Book</h2>
+				<input
+					class="form-input"
+					type="text"
+					name="title"
+					id="title"
+					required
+					placeholder="Title"
+				/>
+				<input
+					class="form-input"
+					type="text"
+					name="author"
+					id="author"
+					required
+					placeholder="Author"
+				/>
+				<input
+					class="form-input"
+					type="number"
+					name="pages"
+					id="pages"
+					required
+					placeholder="Pages"
+				/>
+				<div>
+					<label for="read">Has been Read:</label>
+					<input class="form-checkbox" type="checkbox" name="read" id="read" />
+				</div>
+				<button type="button" class="button" id="create-button">Create</button>
+			</form>
+
+			<div id="library"></div>
+		</main>
+
+		<script src="./main.js"></script>
+	</body>
+</html>
