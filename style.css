@@ -12,6 +12,13 @@
 	--main-font-sans: "Roboto", sans-serif;
 }
 
+::-webkit-scrollbar {
+	background-color: var(--secondary-color-gray);
+}
+::-webkit-scrollbar-thumb {
+	background-color: #818181;
+}
+
 * {
 	margin: 0 0;
 	padding: 0;
@@ -150,7 +157,7 @@
 	display: flex;
 	flex-direction: column;
 	width: 20rem;
-	background-color: var(--acent-color-gray-opacity);
+	background-color: var(--secondary-color-gray);
 	padding: 2rem;
 	border-radius: 10px;
 	text-align: center;
@@ -173,19 +180,25 @@
 }
 
 #library {
+	justify-content: space-around;
 	padding: 2rem;
-	display: grid;
-	grid-template-columns: repeat(autofit, minmax(200px, 1fr));
-	gap: 1rem;
+	display: flex;
+	flex-wrap: wrap;
+	background-color: var(--secondary-color-gray-opacity);
+	border-radius: 10px;
+	height: 32vw;
+	overflow-y: auto;
 }
 
 .book {
+	flex-grow: 1;
+	flex-shrink: 0;
+	max-height: 220px;
+	max-width: 220px;
 	padding: 1rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	width: 200px;
-	height: 200px;
 	background-color: var(--secondary-color-gray-opacity);
 	border-radius: 1rem;
 	text-align: center;

@@ -20,9 +20,6 @@ class Book {
 		this.pages = pages;
 		this.isRead = isRead;
 	}
-	static calculatePages(pages) {
-		return pages * 2;
-	}
 }
 
 function createBook(e) {
