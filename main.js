@@ -8,6 +8,8 @@ const $container = document.querySelector(".container");
 let myLibrary = [];
 let bookCounter = 0;
 
+$form.onsubmit = createBook;
+
 //Constructor
 
 function Book(title, author, pages, isRead) {
@@ -21,33 +23,33 @@ Book.prototype.info = function () {
 	return `${this.title} by ${this.author}, ${this.pages} pages, ${this.isRead}`;
 };
 
-function createBook() {
-	$createBookButton.addEventListener("click", (e) => {
-		e.preventDefault();
+function createBook(e) {
+	e.preventDefault();
+	console.log(e);
+	let title = document.querySelector("#title");
+	let author = document.querySelector("#author");
+	let pages = document.querySelector("#pages");
+	let hasBeenRead = document.querySelector("#read");
 
-		let title = document.querySelector("#title");
-		let author = document.querySelector("#author");
-		let pages = document.querySelector("#pages");
-		let hasBeenRead = document.querySelector("#read");
+	const newBook = new Book(
+		title.value,
+		author.value,
+		pages.value,
+		hasBeenRead.checked
+	);
 
-		const newBook = new Book(
-			title.value,
-			author.value,
-			pages.value,
-			hasBeenRead.checked
-		);
+	myLibrary.push(newBook);
+	console.log(myLibrary);
 
-		myLibrary.push(newBook);
-		console.log(myLibrary);
+	displayBook();
 
-		displayBook();
+	bookCounter = bookCounter + 1;
 
-		bookCounter = bookCounter + 1;
+	title.value = "";
+	author.value = "";
+	pages.value = "";
 
-		title.value = "";
-		author.value = "";
-		pages.value = "";
-	});
+	closePopUp();
 }
 
 function displayBook() {
@@ -84,7 +86,6 @@ function closePopUp(e) {
 
 function displayForm() {
 	$addButton.addEventListener("click", openPopUp);
-	$createBookButton.addEventListener("click", closePopUp);
 }
 
 displayForm();
