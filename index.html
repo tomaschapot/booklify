@@ -33,9 +33,10 @@
 				<h3 class="add-title">Add Book</h3>
 			</div>
 
-			<form action="" class="form-popup book-form">
+			<form action="" method="" class="form-popup book-form">
 				<h2>Add a Book</h2>
 				<input
+					minlength="2"
 					class="form-input"
 					type="text"
 					name="title"
@@ -63,13 +64,15 @@
 					<label for="read">Has been Read:</label>
 					<input class="form-checkbox" type="checkbox" name="read" id="read" />
 				</div>
-				<button type="reset" class="button" id="create-button">Create</button>
+				<button class="button" id="create-button">Create</button>
 			</form>
 
 			<div id="library">
 				<div class="book">
 					<h2>Lord of the Rings</h2>
-					<p></p>
+					<p>Author: Tolkien</p>
+					<p>Pages: 1000</p>
+					<button class="button">Has Been Read?</button>
 				</div>
 			</div>
 		</main>
