@@ -95,17 +95,22 @@ function displayBook() {
 	book.appendChild(read);
 	$library.appendChild(book);
 }
+function openPopUp(e) {
+	$form.style.display = "flex";
+	$form.style.opacity = 1;
+	e.stopPropagation();
+}
+
+function closePopUp() {
+	$form.style.display = "none";
+	$form.style.opacity = 0;
+	e.stopPropagation();
+}
 
 function displayForm() {
-	$addButton.addEventListener("click", () => {
-		$form.style.display = "flex";
-		$form.style.opacity = 1;
-	});
-
-	$createBookButton.addEventListener("click", () => {
-		$form.style.display = "none";
-		$form.style.opacity = 0;
-	});
+	$addButton.addEventListener("click", openPopUp);
+	$createBookButton.addEventListener("click", closePopUp);
+	document.body.addEventListener("click", closePopUp);
 }
 
 displayForm();
