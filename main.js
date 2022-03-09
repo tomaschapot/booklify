@@ -5,6 +5,7 @@ const $form = document.querySelector(".form-popup");
 const $library = document.querySelector("#library");
 const $createBookButton = document.querySelector("#create-button");
 const $container = document.querySelector(".container");
+const $modalOverlay = document.querySelector(".modal-overlay");
 let myLibrary = [];
 let bookCounter = 0;
 
@@ -12,20 +13,21 @@ $form.onsubmit = createBook;
 
 //Constructor
 
-function Book(title, author, pages, isRead) {
-	this.title = title;
-	this.author = author;
-	this.pages = pages;
-	this.isRead = isRead;
+class Book {
+	constructor(title, author, pages, isRead) {
+		this.title = title;
+		this.author = author;
+		this.pages = pages;
+		this.isRead = isRead;
+	}
+	static calculatePages(pages) {
+		return pages * 2;
+	}
 }
-
-Book.prototype.info = function () {
-	return `${this.title} by ${this.author}, ${this.pages} pages, ${this.isRead}`;
-};
 
 function createBook(e) {
 	e.preventDefault();
-	console.log(e);
+
 	let title = document.querySelector("#title");
 	let author = document.querySelector("#author");
 	let pages = document.querySelector("#pages");
@@ -75,17 +77,24 @@ function displayBook() {
 function openPopUp(e) {
 	$form.style.display = "flex";
 	$form.style.opacity = 1;
+	$modalOverlay.style.display = "flex";
+	$modalOverlay.style.opacity = 1;
+	$modalOverlay.style.pointerEvents = "all";
 	e.stopPropagation();
 }
 
 function closePopUp(e) {
 	$form.style.display = "none";
 	$form.style.opacity = 0;
+	$modalOverlay.style.display = "none";
+	$modalOverlay.style.opacity = 1;
+	$modalOverlay.style.pointerEvents = "none";
 	e.stopPropagation();
 }
 
 function displayForm() {
 	$addButton.addEventListener("click", openPopUp);
+	$modalOverlay.addEventListener("click", closePopUp);
 }
 
 displayForm();

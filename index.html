@@ -37,6 +37,7 @@
 				<h2>Add a Book</h2>
 				<input
 					minlength="2"
+					maxlength="30"
 					class="form-input"
 					type="text"
 					name="title"
@@ -45,6 +46,8 @@
 					placeholder="Title"
 				/>
 				<input
+					pattern="[a-z A-Z]{2,25}"
+					title="Name must be between 2 and 25 characters"
 					class="form-input"
 					type="text"
 					name="author"
@@ -68,15 +71,15 @@
 			</form>
 
 			<div id="library">
-				<div class="book">
+				<!--<div class="book">
 					<h2>Lord of the Rings</h2>
 					<p>Author: Tolkien</p>
 					<p>Pages: 1000</p>
 					<button class="button">Has Been Read?</button>
-				</div>
+				</div>-->
 			</div>
 		</main>
-
+		<div class="modal-overlay form-popup"></div>
 		<script src="./main.js"></script>
 	</body>
 </html>
