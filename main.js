@@ -5,6 +5,7 @@ const $form = document.querySelector(".form-popup");
 const $library = document.querySelector("#library");
 const $createBookButton = document.querySelector("#create-button");
 let myLibrary = [];
+let bookCounter = 0;
 
 //Constructor
 
@@ -25,14 +26,7 @@ Book.prototype.info = function () {
 
 /*
 function addBookToLibrary() {
-	const title = prompt("whats the title of your book?");
-	const author = prompt("whats the Author of your book?");
-	const pages = prompt("whats the number of Pages of you book?");
-	const isRead = prompt("Has the book been read?");
-
-	let book = new Book(title, author, pages, isRead);
-
-	myLibrary.push(book);
+	
 }
 addBookToLibrary();
 
@@ -62,12 +56,57 @@ function displayingBooks(myLibrary) {
 displayingBooks(myLibrary);
 */
 
-$addButton.addEventListener("click", () => {
-	$form.style.display = "flex";
-	$form.style.opacity = 1;
-});
+function createBook() {
+	$createBookButton.addEventListener("click", () => {
+		let title = document.querySelector("#title").value;
+		let author = document.querySelector("#author").value;
+		let pages = document.querySelector("#pages").value;
+		let hasBeenRead = document.querySelector("#read").checked;
 
-$createBookButton.addEventListener("click", () => {
-	$form.style.display = "none";
-	$form.style.opacity = 0;
-});
+		const newBook = new Book(title, author, pages, hasBeenRead);
+
+		myLibrary.push(newBook);
+		console.log(myLibrary);
+		title.value = "";
+		author.value = "";
+		pages.value = "";
+
+		displayBook();
+		bookCounter = bookCounter + 1;
+	});
+}
+
+function displayBook() {
+	let book = document.createElement("div");
+	let title = document.createElement("h2");
+	let author = document.createElement("p");
+	let pages = document.createElement("p");
+	let read = document.createElement("p");
+
+	title.innerText = myLibrary[bookCounter].title;
+	author.innerText = `Author: ${myLibrary[bookCounter].author}`;
+	pages.innerText = `Pages: ${myLibrary[bookCounter].pages}`;
+	read.innerText = myLibrary[bookCounter].read;
+
+	book.classList.add("book");
+	book.appendChild(title);
+	book.appendChild(author);
+	book.appendChild(pages);
+	book.appendChild(read);
+	$library.appendChild(book);
+}
+
+function displayForm() {
+	$addButton.addEventListener("click", () => {
+		$form.style.display = "flex";
+		$form.style.opacity = 1;
+	});
+
+	$createBookButton.addEventListener("click", () => {
+		$form.style.display = "none";
+		$form.style.opacity = 0;
+	});
+}
+
+displayForm();
+createBook();

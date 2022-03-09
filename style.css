@@ -7,6 +7,7 @@
     --secondary-color-gray-opacity:#4f4f5180;
     --secondary-color-gray: #4f4f51;
     --accent-color-gray:#d6d6d6;
+    --acent-color-gray-opacity: #d6d6d61a; 
     --main-font-serif: 'Lora', serif;
     --main-font-sans: 'Roboto', sans-serif;
     
@@ -19,7 +20,7 @@
     list-style: none;
     gap: 1rem;
     font-family: var(--main-font-sans);
-    color: white;
+    
 }
 
 .button{
@@ -80,6 +81,7 @@
     width: 400px;
     border-radius: 15px;
     padding: 5px 10px;
+    border: none;
     
 }
 
@@ -105,6 +107,7 @@
     font-size: 2rem;
     border-radius: 50%; 
     transition: 0.2; 
+    
 }
 .add:hover{
     background-color: var(--main-color-pink);
@@ -118,7 +121,8 @@
     opacity: 0;
     transition: visibility 0.2s, opacity 0.2s linear;
     font-weight: 400;
-    font-size: 1rem;     
+    font-size: 1rem;    
+    color: white; 
 }
 
 .button-container:hover .add-title{
@@ -137,20 +141,31 @@
 }
 
 .book-form{
+    
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 15%;
+    text-align: center;
+    color: white;
     transition: all .2s ease-in-out;
     margin: 30px auto;
     display: flex;
     flex-direction: column;
     width: 20rem;
-    background-color: var(--secondary-color-gray);
+    background-color: var(--acent-color-gray-opacity);
     padding: 2rem;
     border-radius: 10px;
     text-align: center;
+    height: 350px;
     
 
 }
 
 .form-input{
+    color: var(--main-color-black);
     padding: 0.5rem;
     border-radius: 10px;
     border: none;
