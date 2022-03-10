@@ -57,27 +57,42 @@ function displayBook() {
 	let author = document.createElement("p");
 	let pages = document.createElement("p");
 	let read = document.createElement("button");
+	let removeButton = document.createElement("button");
+	removeButton.classList.add("remove-button");
+	removeButton.textContent = "X";
+
 	read.classList.add("button");
 	read.innerText = "Has been Read?";
 
 	title.innerText = myLibrary[bookCounter].title;
 	author.innerText = `Author: ${myLibrary[bookCounter].author}`;
 	pages.innerText = `Pages: ${myLibrary[bookCounter].pages}`;
-
+	book.appendChild(removeButton);
 	book.classList.add("book");
 	book.appendChild(title);
 	book.appendChild(author);
 	book.appendChild(pages);
 	book.appendChild(read);
 	$library.appendChild(book);
+	removeBook();
 }
+
+function removeBook() {
+	const $removeButton = document.querySelectorAll(".remove-button");
+	$removeButton.forEach((button) => {
+		button.addEventListener("click", (e) => {
+			e.preventDefault();
+			e.target.closest("div.book").remove();
+		});
+	});
+}
+
 function openPopUp(e) {
 	$form.style.display = "flex";
 	$form.style.opacity = 1;
 	$modalOverlay.style.display = "flex";
 	$modalOverlay.style.opacity = 1;
 	$modalOverlay.style.pointerEvents = "all";
-	e.stopPropagation();
 }
 
 function closePopUp(e) {
@@ -86,7 +101,6 @@ function closePopUp(e) {
 	$modalOverlay.style.display = "none";
 	$modalOverlay.style.opacity = 1;
 	$modalOverlay.style.pointerEvents = "none";
-	e.stopPropagation();
 }
 
 function displayForm() {
