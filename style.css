@@ -189,6 +189,11 @@
 	font-weight: 900;
 }
 
+.remove-button:hover {
+	color: var(--main-color-black);
+	background-color: var(--main-color-pink);
+}
+
 #library {
 	justify-content: center;
 	padding: 2rem;
@@ -204,10 +209,10 @@
 .book {
 	flex-grow: 1;
 	flex-shrink: 0;
-	height: 220px;
-	width: 220px;
-	max-width: 220px;
-	max-height: 220px;
+	height: 250px;
+	width: 250px;
+	max-width: 250px;
+	max-height: 250px;
 	padding: 1rem;
 	display: flex;
 	flex-direction: column;
@@ -220,7 +225,36 @@
 	cursor: pointer;
 }
 
+.book-title {
+	font-size: 1.3rem;
+	font-family: var(--main-font-serif);
+	margin: 0;
+	color: white;
+}
+.book-content {
+	color: var(--accent-color-gray);
+	font-size: 0.8rem;
+}
+
 .book:hover {
 	outline: 3px solid var(--main-color-pink);
-	transform: translate(0, -10px);
+	transform: scale(108%);
+}
+
+.book-button {
+	color: white;
+	background-color: var(--secondary-color-pink);
+	font-size: 0.7rem;
+	padding: 0.5rem;
+	border-radius: 10px;
+	border: 0;
+}
+
+.book-button:hover {
+	color: var(--main-color-black);
+	background-color: var(--main-color-pink);
+}
+
+.not-read {
+	background-color: var(--secondary-color-gray);
 }

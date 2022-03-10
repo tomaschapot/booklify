@@ -54,28 +54,64 @@ function createBook(e) {
 function displayBook() {
 	let book = document.createElement("div");
 	let title = document.createElement("h2");
-	title.classList.add("title");
 	let author = document.createElement("p");
 	let pages = document.createElement("p");
 	let read = document.createElement("button");
 	let removeButton = document.createElement("button");
-	removeButton.classList.add("remove-button");
-	removeButton.textContent = "X";
 
-	read.classList.add("button");
-	read.innerText = "Has been Read?";
+	title.classList.add("book-title");
+	author.classList.add("book-content");
+	pages.classList.add("book-content");
+	read.classList.add("book-button");
+	removeButton.classList.add("remove-button");
+	book.classList.add("book");
 
 	title.innerText = myLibrary[bookCounter].title;
 	author.innerText = `Author: ${myLibrary[bookCounter].author}`;
 	pages.innerText = `Pages: ${myLibrary[bookCounter].pages}`;
+
+	if (myLibrary[bookCounter].isRead === true) {
+		read.innerText = "Read";
+		read.classList.add("read");
+	} else {
+		read.innerText = "Not Read";
+		read.classList.add("not-read");
+	}
+
+	removeButton.textContent = "X";
+
 	book.appendChild(removeButton);
-	book.classList.add("book");
 	book.appendChild(title);
 	book.appendChild(author);
 	book.appendChild(pages);
 	book.appendChild(read);
 	$library.appendChild(book);
+
 	removeBook();
+}
+
+$library.addEventListener("mousedown", changeReadStatus);
+
+function changeReadStatus() {
+	const $readButtons = document.querySelectorAll(".read");
+
+	$readButtons.forEach((button) => {
+		button.addEventListener("click", (e) => {
+			e.target.classList.add("not-read");
+			e.target.classList.remove("read");
+			e.target.innerText = "Not Read";
+		});
+	});
+
+	const $notReadButtons = document.querySelectorAll(".not-read");
+
+	$notReadButtons.forEach((button) => {
+		button.addEventListener("click", (e) => {
+			e.target.classList.remove("not-read");
+			e.target.classList.add("read");
+			e.target.innerText = "Read";
+		});
+	});
 }
 
 function removeBook() {
@@ -97,7 +133,7 @@ function removeBook() {
 	});
 }
 
-function openPopUp(e) {
+function openPopUp() {
 	$form.style.display = "flex";
 	$form.style.opacity = 1;
 	$modalOverlay.style.display = "flex";
@@ -105,7 +141,7 @@ function openPopUp(e) {
 	$modalOverlay.style.pointerEvents = "all";
 }
 
-function closePopUp(e) {
+function closePopUp() {
 	$form.style.display = "none";
 	$form.style.opacity = 0;
 	$modalOverlay.style.display = "none";
