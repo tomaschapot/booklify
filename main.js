@@ -54,6 +54,7 @@ function createBook(e) {
 function displayBook() {
 	let book = document.createElement("div");
 	let title = document.createElement("h2");
+	title.classList.add("title");
 	let author = document.createElement("p");
 	let pages = document.createElement("p");
 	let read = document.createElement("button");
@@ -82,6 +83,15 @@ function removeBook() {
 	$removeButton.forEach((button) => {
 		button.addEventListener("click", (e) => {
 			e.preventDefault();
+			let target = e.target.closest("div.book");
+			let currentTitle = target.querySelector("h2").innerText;
+
+			for (let i = 0; i < myLibrary.length; i++) {
+				if (myLibrary[i].title == currentTitle) {
+					myLibrary.splice(i, 1);
+					bookCounter = bookCounter - 1;
+				}
+			}
 			e.target.closest("div.book").remove();
 		});
 	});
